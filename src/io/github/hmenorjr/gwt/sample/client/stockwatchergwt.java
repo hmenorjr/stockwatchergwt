@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.Timer;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class StockWatcherGwt implements EntryPoint {
   private Button addStockButton = new Button("Add");
   private Label lastUpdatedLabel = new Label();
   private ArrayList<String> stocks = new ArrayList<String>();
+  private static final int REFRESH_INTERVAL = 5000; // ms
 
   /**
    * The message displayed to the user when the server cannot be reached or
@@ -46,6 +48,7 @@ public class StockWatcherGwt implements EntryPoint {
     stocksFlexTable.setText(0, 1, "Price");
     stocksFlexTable.setText(0, 2, "Change");
     stocksFlexTable.setText(0, 3, "Remove");
+
     // Assemble Add Stock panel.
     addPanel.add(newSymbolTextBox);
     addPanel.add(addStockButton);
@@ -60,6 +63,15 @@ public class StockWatcherGwt implements EntryPoint {
 
     // Move cursor focus to the input box.
     newSymbolTextBox.setFocus(true);
+
+    // Timer to refresh the table list automatically
+    Timer refreshTimer = new Timer() {
+      @Override
+      public void run() {
+        refreshWatchList();
+      }
+    };
+    refreshTimer.scheduleRepeating(REFRESH_INTERVAL);
 
     // Event listener: mouse click on the [add] button
     addStockButton.addClickHandler(new ClickHandler() {
@@ -112,5 +124,11 @@ public class StockWatcherGwt implements EntryPoint {
       }
     });
     stocksFlexTable.setWidget(row, 3, removeButtonStock);
+
+    refreshWatchList(); // refreshWatchList
+  }
+
+  private void refreshWatchList() {
+    // TODO https://www.gwtproject.org/doc/latest/tutorial/codeclient.html
   }
 }
