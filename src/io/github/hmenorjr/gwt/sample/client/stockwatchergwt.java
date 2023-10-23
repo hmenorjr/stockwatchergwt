@@ -1,18 +1,18 @@
 package io.github.hmenorjr.gwt.sample.client;
 
-import io.github.hmenorjr.gwt.sample.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.user.client.Window;
 
 /**
@@ -58,7 +58,7 @@ public class StockWatcherGwt implements EntryPoint {
     newSymbolTextBox.setFocus(true);
 
     // Event listener: mouse click on the [add] button
-    addStockButton.addClickHandler(new ClickHandler) {
+    addStockButton.addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
         addStock();
       }
