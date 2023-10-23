@@ -78,6 +78,19 @@ public class StockWatcherGwt implements EntryPoint {
    * presses enter in the newSymbolTextBox.
    */
   private void addStock() {
-    // TODO Auto-generated method stub
+    final String symbol = newSymbolTextBox.getText().toUpperCase().trim(); // get the input
+    newSymbolTextBox.setFocus(true); // refocux to the input box
+    // Validate the input.
+    // Stock code must be between 1 and 10 chars that are numbers, letters, or dots.
+    if (!symbol.matches("^[0-9A-Z\\.]{1,10}$")) {
+      Window.alert("'" + symbol + "' is not a valid symbol.");
+      newSymbolTextBox.selectAll();
+      return;
+    }
+    newSymbolTextBox.setText("");
+
+    // TODO Check for duplicates.
+    // TODO Add the stock.
+    // TODO Add a button for removing the stock from the list.
   }
 }
