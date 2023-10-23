@@ -15,6 +15,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.Window;
 
+import java.util.ArrayList;
+
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
@@ -25,6 +27,8 @@ public class StockWatcherGwt implements EntryPoint {
   private TextBox newSymbolTextBox = new TextBox();
   private Button addStockButton = new Button("Add");
   private Label lastUpdatedLabel = new Label();
+  private ArrayList<String> stocks = new ArrayList<String>();
+
   /**
    * The message displayed to the user when the server cannot be reached or
    * returns an error.
@@ -90,8 +94,23 @@ public class StockWatcherGwt implements EntryPoint {
     }
     newSymbolTextBox.setText("");
 
-    // TODO Check for duplicates.
-    // TODO Add the stock.
-    // TODO Add a button for removing the stock from the list.
+    // Check for duplicates.
+    if (stocks.contains(symbol)) { return; } // return nothing
+
+    // At this point, it means the stock doesn't exist in the list. Add the stock to the table.
+    int row = stocksFlexTable.getRowCount();
+    stocks.add(symbol);
+    stocksFlexTable.setText(row, 0, symbol);
+
+    // Add a button for removing the stock from the list once the row is created.
+    Button removeButtonStock = new Button("remove");
+    removeButtonStock.addClickHandler(new ClickHandler() {
+      public void onClick(ClickEvent event) {
+        int indexOfSymbol = stocks.indexOf(symbol);
+        stocks.remove(indexOfSymbol); // remove from list
+        stocksFlexTable.removeRow(indexOfSymbol + 1); // rmove from table list
+      }
+    });
+
   }
 }
