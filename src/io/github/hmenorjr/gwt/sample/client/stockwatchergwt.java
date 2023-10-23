@@ -44,7 +44,9 @@ public class StockWatcherGwt implements EntryPoint {
     mainPanel.add(addPanel);
     mainPanel.add(lastUpdatedLabel);
 
-    // TODO Associate the Main panel with the HTML host page.
+    // Connect the Main panel with the HTML host page.
+    RootPanel.get("stockList").add(mainPanel);
+
     // TODO Move cursor focus to the input box.
   }
 }
