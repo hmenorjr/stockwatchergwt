@@ -9,7 +9,7 @@ We've tested against Eclipse 3.4 and 3.5.  Later versions will likely also
 work, earlier versions may not.
 
 If the directory containing this file does not have a .classpath or .project
-file, generate them by running 'ant eclipse.generate'
+file, generate them by running `ant eclipse.generate`
 
 In Eclipse, go to the File menu and choose:
 
@@ -57,16 +57,18 @@ setup.  If you go this route, be sure to:
 
 If you get stuck, try to mimic what the Ant 'build.xml' would do.
 
--- Option D: Using Maven --
+## Option D: Using Maven
 
-If you have generated your project with the option '-maven', you have a 'pom.xml'
-file ready to use. Assuming you have Maven installed in your system, 'mvn' is 
+If you have generated your project with the option '-maven', you have a `pom.xml` 
+file ready to use. Assuming you have Maven installed in your system, `mvn` is 
 in your path, and you have access to maven repositories, you should be able to run:
 
-mvn clean         # delete temporary stuff
-mvn test          # run all the tests (gwt and junit)
-mvn gwt:devmode   # run development mode (needs "mvn package" to be run before)
-mvn package       # generate a .war package ready to deploy
+```
+mvn clean         ## delete temporary stuff
+mvn test          ## run all the tests (gwt and junit)
+mvn gwt:devmode   ## run development mode (needs "mvn package" to be run before)
+mvn package       ## generate a .war package ready to deploy
+```
 
 For more information about other available goals, read Maven and gwt-maven-plugin 
 documentation (http://maven.apache.org, https://tbroyer.github.io/gwt-maven-plugin/)
