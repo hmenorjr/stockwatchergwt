@@ -35,8 +35,15 @@ public class StockWatcherGwt implements EntryPoint {
     stocksFlexTable.setText(0, 1, "Price");
     stocksFlexTable.setText(0, 2, "Change");
     stocksFlexTable.setText(0, 3, "Remove");
-    // TODO Assemble Add Stock panel.
-    // TODO Assemble Main panel.
+    // Assemble Add Stock panel.
+    addPanel.add(newSymbolTextBox);
+    addPanel.add(addStockButton);
+
+    // Assemble Main panel.
+    mainPanel.add(stocksFlexTable);
+    mainPanel.add(addPanel);
+    mainPanel.add(lastUpdatedLabel);
+
     // TODO Associate the Main panel with the HTML host page.
     // TODO Move cursor focus to the input box.
   }
