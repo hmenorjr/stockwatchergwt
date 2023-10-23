@@ -30,7 +30,11 @@ public class StockWatcherGwt implements EntryPoint {
    * This is the entry point method.
    */
   public void onModuleLoad() {
-    // TODO Create table for stock data.
+    // Create table for stock data.
+    stocksFlexTable.setText(0, 0, "Symbol");
+    stocksFlexTable.setText(0, 1, "Price");
+    stocksFlexTable.setText(0, 2, "Change");
+    stocksFlexTable.setText(0, 3, "Remove");
     // TODO Assemble Add Stock panel.
     // TODO Assemble Main panel.
     // TODO Associate the Main panel with the HTML host page.
