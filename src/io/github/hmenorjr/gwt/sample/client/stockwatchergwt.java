@@ -111,6 +111,6 @@ public class StockWatcherGwt implements EntryPoint {
         stocksFlexTable.removeRow(indexOfSymbol + 1); // rmove from table list
       }
     });
-
+    stocksFlexTable.setWidget(row, 3, removeButtonStock);
   }
 }
